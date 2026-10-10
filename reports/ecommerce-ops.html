@@ -1,0 +1,13 @@
+<!doctype html>
+<html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>E-commerce Ops Lab · Synthetic replay</title>
+<style>
+:root{color-scheme:dark}*{box-sizing:border-box}body{margin:0;background:#0b1220;color:#e6eef8;font:16px/1.6 system-ui,sans-serif}main{max-width:1000px;margin:auto;padding:48px 24px}.eyebrow{color:#65dfcf;letter-spacing:.14em;text-transform:uppercase;font-size:12px}h1{font-size:clamp(30px,5vw,48px);line-height:1.15;margin:14px 0}.muted{color:#9caec7}.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:32px 0}.card{padding:22px;background:#142137;border:1px solid #28405d;border-radius:14px}.card b{font-size:32px;display:block}.card span{color:#9caec7}section{margin:32px 0}table{width:100%;border-collapse:collapse}th,td{padding:12px;text-align:right;border-bottom:1px solid #28405d}th:first-child,td:first-child{text-align:left}li{padding:10px 0;color:#ffce9e}footer{border-top:1px solid #28405d;padding-top:18px;color:#9caec7;font-size:14px}@media(max-width:600px){.cards{grid-template-columns:repeat(2,1fr)}main{padding:28px 16px}}
+</style><main><p class="eyebrow">Personal engineering demo · Synthetic data</p>
+<h1>E-commerce operations,<br>with every exception visible.</h1>
+<p class="muted">An offline replay of inventory reservations, fulfillment, cancellation, and explicit refund restocking.</p>
+<div class="cards"><div class='card'><b>15</b><span>Received</span></div><div class='card'><b>11</b><span>Applied</span></div><div class='card'><b>1</b><span>Duplicate</span></div><div class='card'><b>3</b><span>Rejected</span></div></div>
+<section><h2>Inventory after replay</h2><table><thead><tr><th>SKU</th><th>On hand</th><th>Reserved</th><th>Available</th></tr></thead><tbody><tr><td>MUG</td><td>3</td><td>0</td><td>3</td></tr><tr><td>TSHIRT</td><td>8</td><td>0</td><td>8</td></tr></tbody></table></section>
+<section><h2>Rejected attempts</h2><ul><li><strong>evt-005</strong> · order_reserved<br>insufficient stock for TSHIRT: requested 8, available 7</li><li><strong>evt-010</strong> · order_fulfilled<br>unknown order: order-missing</li><li><strong>evt-014</strong> · stock_received<br>event_id collision: payload differs</li></ul><p>Failed fulfillment attempts: <strong>1</strong></p></section>
+<footer>Built as a personal, AI-assisted demo. Single-process, in-memory replay. No live customer data, payment processing, commerce connectors, or production concurrency guarantees.</footer>
+</main></html>

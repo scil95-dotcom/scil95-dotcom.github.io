@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'">
+<title>CSV quality report</title><style>
+:root{color-scheme:light}body{font:16px/1.6 system-ui,sans-serif;background:#f4f7fb;color:#172337;margin:0}
+main{max-width:1100px;margin:40px auto;padding:32px;background:white;border-radius:16px}
+h1{font-size:2rem;margin:0}.eyebrow{color:#12685c;font-weight:700;letter-spacing:.08em}.metrics{display:flex;gap:20px;flex-wrap:wrap;margin:24px 0}
+.metric{padding:18px 28px;background:#edf5f4;border-radius:10px}.metric strong{display:block;font-size:2rem}
+table{border-collapse:collapse;width:100%;font-size:.9rem}th,td{text-align:left;padding:10px;border-bottom:1px solid #dbe3ed;vertical-align:top;overflow-wrap:anywhere}
+th{background:#f4f7fb}.scroll{overflow:auto}code{font-size:.85em}footer{color:#526174;font-size:.85rem;margin-top:28px}
+@media(max-width:650px){main{margin:12px;padding:20px}.metric{flex:1;padding:12px}}
+</style></head><body><main>
+<p class="eyebrow">CSV QUALITY PIPELINE · VALIDATION RESULT</p><h1>Order data quality</h1>
+<p>Explicit rules, row-level reasons, reproducible output. Data source: <code>orders.csv</code>.</p>
+<div class="metrics"><div class="metric">Rows checked<strong>20</strong></div>
+<div class="metric">Accepted<strong>12</strong></div><div class="metric">Rejected<strong>8</strong></div>
+<div class="metric">Acceptance<strong>60.0%</strong></div></div>
+<h2>Rejection reasons</h2><p>A row can have multiple reasons; reason counts can exceed the rejected-row count.</p>
+<div class="scroll"><table><thead><tr><th scope="col">Code</th><th scope="col">Rows</th><th scope="col">Rule</th></tr></thead><tbody><tr><td><code>duplicate_order_id</code></td><td>2</td><td>Every occurrence of a repeated, nonblank order ID is quarantined.</td></tr><tr><td><code>invalid_amount</code></td><td>1</td><td>Use a finite positive decimal: up to 12 integer digits and 2 fractional digits.</td></tr><tr><td><code>invalid_date</code></td><td>1</td><td>Use a real calendar date in YYYY-MM-DD format.</td></tr><tr><td><code>invalid_email</code></td><td>1</td><td>The email does not match the documented conservative syntax.</td></tr><tr><td><code>invalid_order_id</code></td><td>1</td><td>Use 1–64 ASCII letters, digits, dots, underscores or hyphens; start with a letter or digit.</td></tr><tr><td><code>missing_order_id</code></td><td>1</td><td>order_id is required.</td></tr><tr><td><code>unsupported_currency</code></td><td>1</td><td>The currency is outside the case-sensitive allowlist.</td></tr></tbody></table></div>
+<h2>Rows to review</h2><p>Row numbers identify CSV records, including the header as record 1.</p>
+<div class="scroll"><table><thead><tr><th scope='col'>row_number</th><th scope='col'>order_id</th><th scope='col'>customer_email</th><th scope='col'>order_date</th><th scope='col'>amount</th><th scope='col'>currency</th><th scope='col'>reason_codes</th></tr></thead><tbody><tr><td>14</td><td>Q-DUP</td><td>duplicate@example.com</td><td>2026-01-13</td><td>18.00</td><td>EUR</td><td>duplicate_order_id</td></tr><tr><td>15</td><td>Q-DUP</td><td>duplicate@example.com</td><td>2026-01-14</td><td>24.00</td><td>EUR</td><td>duplicate_order_id</td></tr><tr><td>16</td><td>Q-015</td><td>=1+1</td><td>2026-01-15</td><td>25.00</td><td>EUR</td><td>invalid_email</td></tr><tr><td>17</td><td>Q-016</td><td>customer16@example.com</td><td>2026-02-30</td><td>26.00</td><td>EUR</td><td>invalid_date</td></tr><tr><td>18</td><td>Q-017</td><td>customer17@example.com</td><td>2026-01-17</td><td>NaN</td><td>EUR</td><td>invalid_amount</td></tr><tr><td>19</td><td>Q-018</td><td>customer18@example.com</td><td>2026-01-18</td><td>28.00</td><td>XXX</td><td>unsupported_currency</td></tr><tr><td>20</td><td></td><td>customer19@example.com</td><td>2026-01-19</td><td>29.00</td><td>EUR</td><td>missing_order_id</td></tr><tr><td>21</td><td>&lt;img src=x onerror=alert(1)&gt;</td><td>customer20@example.com</td><td>2026-01-20</td><td>30.00</td><td>EUR</td><td>invalid_order_id</td></tr></tbody></table></div>
+<footer>SHA-256: <code>ff374ebba528a8e04ea747829b79e10c7a7bc1eb1bdd822fea6496762b03a523</code><br>Schema version 1 · No external scripts, fonts or tracking.</footer>
+</main></body></html>

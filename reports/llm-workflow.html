@@ -1,0 +1,15 @@
+<!doctype html><html lang="en"><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>LLM Workflow Lab · Routing report</title><style>
+body{margin:0;background:#0b1220;color:#e5edf8;font:16px system-ui,sans-serif;line-height:1.5}
+main{max-width:1160px;margin:auto;padding:52px 24px}h1{font-size:40px;margin:8px 0}
+.eyebrow{color:#57dbbd;letter-spacing:.12em;font-size:12px;font-weight:700}
+.cards{display:flex;gap:16px;flex-wrap:wrap;margin:28px 0}.card{background:#172337;padding:18px 24px;border-radius:12px}
+.card strong{display:block;font-size:28px}p{color:#b8c6dd;max-width:800px}
+.table{overflow:auto}table{border-collapse:collapse;width:100%;font-size:14px;background:#101c2e}
+th,td{text-align:left;padding:14px;border-bottom:1px solid #29374c}th{color:#57dbbd}td:last-child{min-width:220px}
+code{color:#57dbbd}footer{margin-top:24px;color:#93a6c1;font-size:13px}
+</style><main><div class="eyebrow">AUDITABLE AI WORKFLOWS / CLASSIFY-V1</div>
+<h1>Support ticket routing</h1><p>Strict JSON validation, bounded retries, and explicit human review.
+This report describes workflow behavior. Live model quality has not been measured.</p>
+<div class="cards"><div class="card"><strong>6</strong>Tickets</div><div class="card"><strong>4</strong>Automated queue decisions</div><div class="card"><strong>2</strong>Human review decisions</div></div><p>Provider: <code>mock_synthetic</code>. Queue decisions are recorded locally; no external actions are performed.</p><div class="table"><table><thead><tr><th>Ticket</th><th>Category</th><th>Route</th><th>Reason</th><th>Attempts</th><th>Summary</th></tr></thead><tbody><tr><td>billing-01</td><td>billing</td><td>automated_queue</td><td>validated</td><td>1</td><td>Customer reports a duplicate subscription charge.</td></tr><tr><td>technical-01</td><td>technical</td><td>automated_queue</td><td>validated</td><td>1</td><td>Demo team reports that its dashboard is unavailable.</td></tr><tr><td>account-01</td><td>account</td><td>automated_queue</td><td>validated</td><td>1</td><td>Customer asks how to change their display name.</td></tr><tr><td>ambiguous-01</td><td>other</td><td>human_review</td><td>low_confidence</td><td>1</td><td>Reported issue lacks the affected feature and reproduction details.</td></tr><tr><td>abstain-01</td><td>other</td><td>human_review</td><td>abstained</td><td>1</td><td>Customer has not provided enough information to classify the issue.</td></tr><tr><td>retry-01</td><td>billing</td><td>automated_queue</td><td>validated</td><td>2</td><td>Customer asks where to download a receipt.</td></tr></tbody></table></div><footer>Mock fixtures are synthetic, predefined responses. Fixture checks do not establish live accuracy, calibration, or business value.</footer></main></html>
